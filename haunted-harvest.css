@@ -76,6 +76,143 @@ footer { text-align: center; padding: var(--gap); font-size: 0.85rem; }
     transition: none !important;
   }
 }
+/* ===== SCENE 2: Ghost Ship Horizon ===== */
+
+/* Moon + sea + sand */
+#ship .moon {
+  right: 10%; top: 8%; width: 13%; aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff9d0, var(--candle-glow));
+  box-shadow: 0 0 40px var(--candle-glow);
+  animation: s2-glow 6s ease-in-out infinite;
+}
+@keyframes s2-glow { 50% { box-shadow: 0 0 70px var(--candle-glow); } }
+#ship .sea {
+  left: 0; right: 0; bottom: 24%; height: 26%;
+  background: linear-gradient(#0f1f4a, #061030);
+  overflow: hidden;
+}
+#ship .sea::before {
+  content: ""; position: absolute; left: -50%; width: 200%; top: 0; bottom: 0;
+  background: rgba(246, 242, 248, 0.14);
+  clip-path: polygon(0 15%,10% 0,20% 15%,30% 0,40% 15%,50% 0,60% 15%,70% 0,80% 15%,90% 0,100% 15%,100% 100%,0 100%);
+  animation: s2-wave 6s linear infinite;
+}
+@keyframes s2-wave { to { transform: translateX(25%); } }
+#ship .sand {
+  left: 0; right: 0; bottom: 0; height: 26%;
+  background: #2a2030; border-top: 3px solid #4a3a50;
+}
+
+/* WEATHER: clouds, fog, lightning */
+#ship .cloud {
+  top: 12%; height: 7%; width: 24%;
+  background: rgba(58, 26, 94, 0.75); border-radius: 50px;
+  animation: s2-drift 45s linear infinite;
+}
+#ship .c2 { top: 24%; width: 17%; animation-duration: 60s; animation-delay: -25s; }
+@keyframes s2-drift { from { left: -28%; } to { left: 105%; } }
+#ship .fog {
+  left: -100%; width: 200%; height: 14%; bottom: 26%;
+  background: linear-gradient(90deg, transparent, rgba(246,242,248,.3), transparent);
+  animation: s2-fog 20s linear infinite;
+}
+@keyframes s2-fog { to { transform: translateX(50%); } }
+#ship .lightning {
+  inset: 0; background: #fff; opacity: 0; z-index: 6; pointer-events: none;
+  animation: s2-bolt 7s infinite;
+}
+@keyframes s2-bolt {
+  0%,92%,96%,100% { opacity: 0; } 93% { opacity: .6; } 94% { opacity: .1; } 95% { opacity: .5; }
+}
+
+/* VEHICLE 1: ghost ship (hull on ::before so the sail isn't clipped) */
+#ship .ship {
+  left: -35%; bottom: 47%; width: 30%; height: 16%;
+  animation: s2-sail 60s linear infinite, s2-bob 4s ease-in-out infinite;
+}
+#ship .ship::before {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 35%;
+  background: #0a0710;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+}
+#ship .sail {
+  position: absolute; left: 40%; bottom: 35%; width: 30%; height: 65%;
+  background: rgba(246, 242, 248, 0.5);
+  clip-path: polygon(0 100%, 100% 100%, 50% 0);
+  animation: s2-flutter 2s ease-in-out infinite alternate;
+}
+@keyframes s2-sail { from { left: -35%; } to { left: 105%; } }
+@keyframes s2-bob { 50% { transform: translateY(6px); } }
+@keyframes s2-flutter { to { transform: skewX(6deg); } }
+
+/* SKELETONS (human activity) */
+#ship .skel { width: 4.5%; height: 14%; }
+#ship .skel::before {           /* skull */
+  content: ""; position: absolute; left: 10%; top: 0; width: 80%; aspect-ratio: 1;
+  border-radius: 50%; background: var(--ghost-white);
+  box-shadow: inset -3px -3px 0 rgba(0,0,0,.25);
+}
+#ship .skel::after {            /* ribs */
+  content: ""; position: absolute; left: 15%; top: 36%; width: 70%; height: 60%;
+  background: repeating-linear-gradient(var(--ghost-white) 0 4px, transparent 4px 8px);
+}
+#ship .skel .arm {
+  position: absolute; right: -18%; top: 38%; width: 45%; height: 10%;
+  background: var(--ghost-white); border-radius: 4px; transform-origin: left center;
+}
+#ship .pier { right: 0; bottom: 24%; width: 30%; height: 3%; background: #3a2412; }
+#ship .skel.wave { right: 12%; bottom: 27%; }
+#ship .skel.wave .arm { animation: s2-wave-arm .6s ease-in-out infinite alternate; }
+@keyframes s2-wave-arm { from { transform: rotate(-70deg); } to { transform: rotate(-20deg); } }
+
+/* VEHICLE 2: rowboat with rowing skeleton */
+#ship .boat {
+  left: -20%; bottom: 25%; width: 12%; height: 4%;
+  background: #3a2412;
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+  animation: s2-row 26s linear infinite, s2-bob 2s ease-in-out infinite;
+}
+#ship .boat .skel { position: absolute; left: 35%; bottom: 100%; width: 30%; height: 300%; }
+#ship .boat .skel .arm { animation: s2-wave-arm .8s ease-in-out infinite alternate; }
+@keyframes s2-row { from { left: -20%; } to { left: 60%; } }
+
+/* ANIMALS: bats + crab */
+#ship .bat {
+  top: 16%; width: 6%; height: 3%; background: #000;
+  clip-path: polygon(0 0,25% 60%,50% 10%,75% 60%,100% 0,85% 100%,50% 70%,15% 100%);
+  animation: s2-fly 16s linear infinite, s2-flap .3s ease-in-out infinite alternate;
+}
+#ship .b2 { top: 28%; animation-duration: 22s; animation-delay: -9s; }
+@keyframes s2-fly { from { left: -8%; } to { left: 108%; } }
+@keyframes s2-flap { to { transform: scaleY(.4); } }
+#ship .crab {
+  bottom: 8%; left: 20%; width: 5%; height: 3.5%;
+  background: var(--pumpkin); border-radius: 50% 50% 40% 40%;
+  animation: s2-scuttle 9s ease-in-out infinite alternate;
+}
+#ship .crab::before, #ship .crab::after {
+  content: ""; position: absolute; top: -45%; width: 35%; height: 60%;
+  background: var(--pumpkin); border-radius: 50%;
+}
+#ship .crab::before { left: -20%; }
+#ship .crab::after { right: -20%; }
+@keyframes s2-scuttle { 0% { left: 10%; } 45%,55% { left: 40%; } 100% { left: 70%; } }
+
+/* HALLOWEEN: floating jack-o'-lantern */
+#ship .lantern {
+  left: 45%; bottom: 20%; width: 3.5%; aspect-ratio: 1;
+  background: var(--pumpkin); border-radius: 50%; box-shadow: 0 0 14px var(--pumpkin);
+  animation: s2-rise 14s linear infinite;
+}
+#ship .lantern::before {
+  content: ""; position: absolute; left: 25%; top: 30%; width: 50%; height: 25%;
+  background: var(--candle-glow);
+  clip-path: polygon(0 0,30% 100%,50% 30%,70% 100%,100% 0);
+}
+@keyframes s2-rise {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-320%) translateX(25px); opacity: 0; }
 
 /* ===== Sunset Cove ===== */
 
