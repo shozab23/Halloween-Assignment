@@ -213,4 +213,176 @@ footer { text-align: center; padding: var(--gap); font-size: 0.85rem; }
 @keyframes s2-rise {
   from { transform: translateY(0); opacity: 1; }
   to { transform: translateY(-320%) translateX(25px); opacity: 0; }
+
+/* ===== Sunset Cove ===== */
+
+.sun {
+  width: 100px;
+  height: 100px;
+  background: var(--pumpkin);
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 30px var(--candle-glow);
+}
+
+/* Clouds moving across the screen */
+.cloud {
+  font-size: 35px;
+  top: 10%;
+  left: -60px;
+  animation: cloudMove 20s linear infinite;
+}
+
+.cloud2 {
+  top: 25%;
+  animation-delay: -10s;
+}
+
+@keyframes cloudMove {
+  from {
+    left: -60px;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+/* Bat flying across screen */
+.bat {
+  font-size: 30px;
+  top: 15%;
+  left: -50px;
+  animation: batMove 10s linear infinite;
+}
+
+@keyframes batMove {
+  from {
+    left: -50px;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+/* Ghost ship moving across the water */
+.ghost-ship {
+  font-size: 45px;
+  top: 43%;
+  left: -70px;
+  animation: shipMove 18s linear infinite;
+}
+
+@keyframes shipMove {
+  from {
+    left: -70px;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+/* Water */
+.water {
+  position: absolute;
+  width: 100%;
+  height: 27%;
+  bottom: 25%;
+  background: #16425b;
+  overflow: hidden;
+}
+
+.water span {
+  position: absolute;
+  font-size: 25px;
+  left: 10%;
+  top: 20px;
+  animation: waves 5s ease-in-out infinite;
+}
+
+.water span:nth-child(2) {
+  left: 50%;
+  top: 55px;
+  animation-delay: -2s;
+}
+
+.water span:nth-child(3) {
+  left: 75%;
+  top: 20px;
+  animation-delay: -4s;
+}
+
+@keyframes waves {
+  0% {
+    transform: translateX(-10px);
+  }
+
+  50% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+/* Sand */
+.sand {
+  position: absolute;
+  width: 100%;
+  height: 25%;
+  bottom: 0;
+  background: #765536;
+}
+
+/* Skeleton pirates and bonfire */
+.pirates {
+  font-size: 40px;
+  left: 45%;
+  bottom: 12%;
+}
+
+/* Crab walking across the beach */
+.crab {
+  font-size: 30px;
+  left: -50px;
+  bottom: 5%;
+  animation: crabMove 14s linear infinite;
+}
+
+@keyframes crabMove {
+  from {
+    left: -50px;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+/* Pumpkin moving upward */
+.pumpkin {
+  font-size: 35px;
+  right: 15%;
+  bottom: 8%;
+  animation: pumpkinFloat 7s ease-in-out infinite;
+}
+
+@keyframes pumpkinFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-30px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
