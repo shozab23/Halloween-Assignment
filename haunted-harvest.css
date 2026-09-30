@@ -1,0 +1,78 @@
+/* ===== Haunted Harvest: Cursed Cove (CSS only) ===== */
+
+/* Palette & variables */
+:root {
+  --pumpkin: #ff7518;
+  --candy-purple: #5a189a;
+  --spider-black: #1a1423;
+  --slime-green: #8ac926;
+  --ghost-white: #f6f2f8;
+  --candle-glow: #ffd60a;
+  --blood-orange: #c2390f;
+  --gap: 1rem;
+}
+
+/* Base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--spider-black);
+  color: var(--ghost-white);
+  font-family: Poppins, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+h1, h2 { font-family: Creepster, cursive; letter-spacing: 0.06em; font-weight: 400; }
+h1 { color: var(--pumpkin); font-size: clamp(2rem, 7vw, 3rem); }
+h2 { color: var(--slime-green); font-size: clamp(1.6rem, 5vw, 2.4rem); }
+
+/* Accessibility */
+a:focus-visible { outline: 3px solid var(--candle-glow); outline-offset: 3px; border-radius: 4px; }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; background: var(--ghost-white); color: var(--spider-black); padding: 0.5rem; z-index: 99; }
+
+/* Layout */
+.site-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--gap); padding: var(--gap); background: var(--candy-purple); }
+.site-header ul { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; }
+.site-header a { display: block; padding: 0.5rem 0.9rem; background: var(--spider-black); border-radius: 2rem; text-decoration: none; color: var(--ghost-white); transition: transform 0.2s, background 0.2s; }
+.site-header a:hover { background: var(--pumpkin); color: var(--spider-black); transform: translateY(-2px); }
+.scenes { max-width: 1000px; margin: 0 auto; padding: var(--gap); }
+.blurb { margin: 0.25rem 0 var(--gap); }
+.next { display: inline-block; margin-top: var(--gap); padding: 0.6rem 1.2rem; background: var(--pumpkin); color: var(--spider-black); font-weight: 600; border-radius: 2rem; text-decoration: none; transition: transform 0.2s; }
+.next:hover { transform: scale(1.06); }
+footer { text-align: center; padding: var(--gap); font-size: 0.85rem; }
+
+/* CSS-only scene switching */
+.scene { display: none; }
+.scenes:not(:has(.scene:target)) .scene:first-child { display: block; }
+.scene:target { display: block; animation: fadein 0.8s ease; }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+
+/* Stage: animated elements get absolutely positioned inside this */
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 3px solid var(--candy-purple);
+  border-radius: 12px;
+}
+.stage > * { position: absolute; }
+.s-sunset   { background: linear-gradient(#3a1a5e 0%, var(--blood-orange) 48%, var(--pumpkin) 58%); }
+.s-dusk     { background: linear-gradient(#0d0a14, #2a1450 55%, #5a2a6e 60%); }
+.s-midnight { background: linear-gradient(#07050c, #1a1040 60%); }
+
+/* Small screens */
+@media (max-width: 600px) {
+  .site-header { flex-direction: column; align-items: flex-start; }
+  .stage { aspect-ratio: 4 / 5; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition: none !important;
+  }
+}

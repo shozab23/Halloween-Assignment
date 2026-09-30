@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursed Cove – Haunted Harvest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="haunted-harvest.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to scenes</a>
+
+  <header class="site-header">
+    <h1>Cursed Cove</h1>
+    <nav aria-label="Scene navigation">
+      <ul>
+        <li><a href="#sunset">1 · Sunset Cove</a></li>
+        <li><a href="#ship">2 · Ghost Ship Horizon</a></li>
+        <li><a href="#bonfire">3 · Midnight Bonfire</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="scenes">
+
+    <section class="scene" id="sunset" aria-labelledby="t1">
+      <h2 id="t1">Sunset Cove</h2>
+      <p class="blurb">Skeleton pirates warm up at the bonfire as a ghost ship crosses the blood-orange horizon.</p>
+      <div class="stage s-sunset" role="img" aria-label="Beach at sunset with skeleton pirates, a bonfire and a ghost ship">
+        <!-- scene 1 elements go here -->
+      </div>
+      <a class="next" href="#ship">Next: Ghost Ship →</a>
+    </section>
+
+    <section class="scene" id="ship" aria-labelledby="t2">
+      <h2 id="t2">Ghost Ship Horizon</h2>
+      <p class="blurb">Storm clouds roll in as a skeleton rows ashore.</p>
+      <div class="stage s-dusk" role="img" aria-label="Stormy dusk with a ghost ship and a skeleton rowing a boat">
+        <!-- scene 2 elements go here -->
+      </div>
+      <a class="next" href="#bonfire">Next: Midnight Bonfire →</a>
+    </section>
+
+    <section class="scene" id="bonfire" aria-labelledby="t3">
+      <h2 id="t3">Midnight Bonfire</h2>
+      <p class="blurb">Skeletons dance around the fire under a full moon.</p>
+      <div class="stage s-midnight" role="img" aria-label="Midnight beach with dancing skeletons around a bonfire">
+        <!-- scene 3 elements go here -->
+      </div>
+      <a class="next" href="#sunset">Back to start ↺</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Team: Shozab Mirza, Joe Turner · CSS-only, no JavaScript</p>
+  </footer>
+</body>
+</html>
