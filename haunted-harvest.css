@@ -213,7 +213,7 @@ footer { text-align: center; padding: var(--gap); font-size: 0.85rem; }
 @keyframes s2-rise {
   from { transform: translateY(0); opacity: 1; }
   to { transform: translateY(-320%) translateX(25px); opacity: 0; }
-
+}
 /* ===== Sunset Cove ===== */
 
 .sun {
