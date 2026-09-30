@@ -76,3 +76,20 @@ footer { text-align: center; padding: var(--gap); font-size: 0.85rem; }
     transition: none !important;
   }
 }
+/* ===== SCENE 2: Ghost Ship Horizon ===== */
+#ship .moon {
+  right: 10%; top: 8%;
+  width: 13%; aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff9d0, var(--candle-glow));
+  box-shadow: 0 0 40px var(--candle-glow);
+}
+#ship .sea {
+  left: 0; right: 0; bottom: 24%; height: 26%;
+  background: linear-gradient(#0f1f4a, #061030);
+}
+#ship .sand {
+  left: 0; right: 0; bottom: 0; height: 26%;
+  background: #2a2030;
+  border-top: 3px solid #4a3a50;
+}
